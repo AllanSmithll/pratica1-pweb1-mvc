@@ -21,7 +21,7 @@ class DisciplinaRepositorio {
     }
 
     removerDisciplina(codigo) {
-        const indxDisciplinaARemover = this._disciplinas.findIndex(disc => disciplina._codigo === codigo);
+        const indxDisciplinaARemover = this._disciplinas.findIndex(disc => disc._codigo === codigo);
         if (indxDisciplinaARemover > -1) {
             this._disciplinas.splice(indxDisciplinaARemover, 1);
         }

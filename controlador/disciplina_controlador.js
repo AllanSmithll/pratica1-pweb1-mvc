@@ -7,6 +7,10 @@ class DisciplinaControlador {
     inserirDisciplina() {
         const codigoElemento = document.querySelector("#codigo");
         const nomeElemento = document.querySelector("#nomeDisc");
+        if (codigoElemento === null || codigoElemento.value === ""
+            || nomeElemento === null || nomeElemento.value === "") {
+            throw new Error("Algum campo está vazio! Escreva algo.");
+        }
         const disciplinaInserida = this._servico.inserirDisciplina(Number(codigoElemento.value), nomeElemento.value);
         const listaDisciplinasElemento = document.querySelector("#lista_disciplinas");
         if (disciplinaInserida) {
@@ -15,9 +19,14 @@ class DisciplinaControlador {
     }
 
     inserirAluno() {
-        const matriculaElemento = document.querySelector("#matricula");
+        const matriculaElemento = document.querySelector("#matriculaEmDisc");
         const nomeElemento = document.querySelector("#nomeAlu");
         const idadeElemento = document.querySelector("#idade");
+        if (idadeElemento === null || idadeElemento.value == ""
+            || nomeElemento === null || nomeElemento.value === ""
+            || matriculaElemento === null || matriculaElemento.value === "") {
+            throw new Error("Algum campo está vazio! Escreva algo.");
+        }
         const alunoInserido = this._servico.inserirAluno(Number(matriculaElemento.value), nomeElemento.value, Number(idadeElemento.value));
         const listaAlunosElemento = document.querySelector("#lista_alunos");
         if (alunoInserido) {

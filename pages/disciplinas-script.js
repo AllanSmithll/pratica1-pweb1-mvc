@@ -1,1 +1,0 @@
-const controladorDisciplina = new DisciplinaControlador();

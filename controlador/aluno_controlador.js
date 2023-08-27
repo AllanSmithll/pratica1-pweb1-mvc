@@ -7,7 +7,12 @@ class AlunoControlador {
     inserir() {
         const nomeElemento = document.querySelector("#nome");
         const idadeElemento = document.querySelector("#idade");
-        const matriculoElemento = document.querySelector("#matricula");
+        const matriculoElemento = document.querySelector("#matriculaAluno");
+        if (idadeElemento === null || idadeElemento.value === ""
+            || nomeElemento === null || nomeElemento.value === ""
+            || matriculoElemento === null || matriculoElemento.value === "") {
+            throw new Error("Algum campo está vazio! Escreva algo.");
+        }
         const alunoInserido = this.servico.inserir(nomeElemento.value, Number(idadeElemento.value),
             matriculoElemento.value);
         const listaAlunosElemento = document.querySelector("#listaAlunos");

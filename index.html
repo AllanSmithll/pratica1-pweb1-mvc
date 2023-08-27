@@ -8,20 +8,74 @@
 </head>
 
 <body>
-    <h1>Cadastro de alunos</h1>
+    <h1>Acadêmico - IFPB</h1>
 
-    <p>Nome: <input id="nome"><br></p>
-    <p>Idade: <input id="idade" type="number"><br></p>
-    <p>Matrícula: <input id="matricula"><br></p>
-    <button onclick="controladorAluno.inserir()">Cadastrar</button>
+    <div class="container">
+        <h2>Cadastro de Alunos</h2>
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome">
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade">
+        </div>
+        <div class="form-group">
+            <label for="matriculaAluno">Matrícula:</label>
+            <input type="text" id="matriculaAluno">
+        </div>
+        <button onclick="controladorAluno.inserir()">Cadastrar Aluno</button>
 
-    <ol id="listaAlunos"></ol>
+        <h2>Cadastro de Disciplinas</h2>
+        <div class="form-group">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo">
+        </div>
+        <div class="form-group">
+            <label for="nomeDisc">Nome:</label>
+            <input type="text" id="nomeDisc">
+        </div>
+        <button onclick="controladorDisciplina.inserirDisciplina()">Cadastrar Disciplina</button>
 
-    <button><a href="pages/disciplinas.html">Ir para a página de disciplinas </a></button>
-</body>
+        <h2>Cadastrar Alunos em Disciplina</h2>
+        <div class="form-group">
+            <label for="matriculaEmDisc">Matrícula:</label>
+            <input type="text" id="matriculaEmDisc">
+        </div>
+        <div class="form-group">
+            <label for="nomeAlu">Nome:</label>
+            <input type="text" id="nomeAlu">
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade">
+        </div>
+        <button onclick="controladorDisciplina.inserirAluno()">Cadastrar Aluno na Disciplina</button>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Alunos</h2>
+        <ol id="listaAlunos"></ol>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Disciplinas</h2>
+        <ol id="lista_disciplinas"></ol>
+    </div>
+
+    <div class="container">
+        <h2>Alunos nas Disciplinas</h2>
+        <ol id="lista_alunos"></ol>
+    </div>
+
     <script src="modelo/aluno.js"></script>
+    <script src="modelo/disciplina.js"></script>
     <script src="repositorio/aluno_repositorio.js"></script>
+    <script src="repositorio/disciplina_repositorio.js"></script>
     <script src="servico/aluno_service.js"></script>
+    <script src="servico/disciplina_servico.js"></script>
     <script src="controlador/aluno_controlador.js"></script>
+    <script src="controlador/disciplina_controlador.js"></script>
     <script src="scripts.js"></script>
+</body>
 </html>

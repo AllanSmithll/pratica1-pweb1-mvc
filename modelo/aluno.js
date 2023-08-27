@@ -2,8 +2,8 @@ class Aluno {
 
     constructor(nome, idade, matricula) {
         this._nome = nome;
-        this.idade = idade;
-        this.matricula = matricula;
+        this._idade = idade;
+        this._matricula = matricula;
     }
 
     get nome() {
@@ -13,6 +13,7 @@ class Aluno {
     set nome(novoNome) {
         this._nome = novoNome;
     }
+
     get idade() {
         return this._idade;
     }
@@ -20,6 +21,7 @@ class Aluno {
     set idade(novaIdade) {
         this._idade = novaIdade;
     }
+
     get matricula() {
         return this._matricula;
     }

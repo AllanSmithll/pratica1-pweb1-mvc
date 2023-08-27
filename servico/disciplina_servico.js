@@ -1,27 +1,43 @@
 class DisciplinaService {
     constructor() {
-        this.repositorio = new DisciplinaRepositorio();
+        this._repositorio = new DisciplinaRepositorio();
     }
 
-    inserirAlunoDisciplina(nome, idade, matricula) {
-        const alunoPesquisado = this.pesquisarPorMatricula(matricula);
-        if (alunoPesquisado.length > 0) {
-            throw new Error('Aluno já cadastrado!');
+    inserirDisciplina(codigo, nome) {
+        const discPesquisada = this.pesquisarDisciplinaPorCodigo(codigo);
+        if (discPesquisada.length > 0) {
+            throw new Error('Disciplina já cadastrada!');
         }
-        if (idade < 18) {
-            throw new Error("Aluno menor de idade não pode inserido.")
+        const discNova = new Disciplina(codigo, nome);
+        this._repositorio.inserirDisciplina(discNova);
+        return discNova;
+    }
+
+    inserirAluno(matricula, nome, idade) {
+        const alunoPesquisado = this.pesquisarAlunoPorMatricula(matricula);
+        if (alunoPesquisado.length > 0) {
+            throw new Error('Aluno já cadastrado na disciplina!');
         }
         const alunoNovo = new Aluno(nome, idade, matricula);
-        this.repositorio.inserir(alunoNovo);
+        this._repositorio.inserirAluno(alunoNovo);
         return alunoNovo;
     }
 
-    pesquisarAlunoPorMatricula(matricula) {
-        return this.repositorio.listar().filter(
-            aluno => aluno.matricula === matricula);
+    pesquisarDisciplinaPorCodigo(codigo) {
+        return this._repositorio.listarDisciplinas().filter(
+            disc => disc._codigo === codigo);
     }
 
-    removerAluno(matricula) {
-        this.repositorio.remover(matricula);
+    pesquisarAlunoPorMatricula(matricula) {
+        return this._repositorio.listarAlunos().filter(
+            alu => alu._matricula === matricula);
+    }
+
+    removerAlunoDaDisciplina(matricula) {
+        this._repositorio.removerAluno(matricula);
+    }
+
+    removerDisciplina(codigo) {
+        this._repositorio.removerDisciplina(codigo);
     }
 }

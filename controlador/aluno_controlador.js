@@ -18,7 +18,7 @@ class AlunoControlador {
 
     inserirAlunoNoHtml(aluno, elementoDestino) {
         const alunoElemento = document.createElement("li");
-        alunoElemento.textContent = `Nome: ${aluno.nome} - Idade: ${aluno.idade}`;
+        alunoElemento.textContent = `Nome: ${aluno._nome} - Idade: ${aluno._idade}`;
         elementoDestino.appendChild(alunoElemento);
     }
 }

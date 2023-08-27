@@ -1,6 +1,6 @@
 class AlunoService {
     constructor() {
-        this.repositorio = new AlunoRepositorio();
+        this._repositorio = new AlunoRepositorio();
     }
 
     inserir(nome, idade, matricula) {
@@ -12,16 +12,16 @@ class AlunoService {
             throw new Error("Aluno menor de idade não pode inserido.")
         }
         const alunoNovo = new Aluno(nome, idade, matricula);
-        this.repositorio.inserir(alunoNovo);
+        this._repositorio.inserir(alunoNovo);
         return alunoNovo;
     }
 
     pesquisarPorMatricula(matricula) {
-        return this.repositorio.listar().filter(
-            aluno => aluno.matricula === matricula);
+        return this._repositorio.listar().filter(
+            aluno => aluno._matricula === matricula);
     }
 
     remover(matricula) {
-        this.repositorio.remover(matricula);
+        this._repositorio.remover(matricula);
     }
 }

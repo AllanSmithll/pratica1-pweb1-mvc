@@ -14,14 +14,14 @@ class DisciplinaRepositorio {
     }
 
     removerAluno(matricula) {
-        const indxAlunoARemover = this._alunos_matriculados.findIndex(aluno => aluno.matricula === matricula);
+        const indxAlunoARemover = this._alunos_matriculados.findIndex(aluno => aluno._matricula === matricula);
         if (indxAlunoARemover > -1) {
             this._alunos_matriculados.splice(indxAlunoARemover, 1);
         }
     }
 
     removerDisciplina(codigo) {
-        const indxDisciplinaARemover = this._disciplinas.findIndex(disc => disciplina.codigo === codigo);
+        const indxDisciplinaARemover = this._disciplinas.findIndex(disc => disciplina._codigo === codigo);
         if (indxDisciplinaARemover > -1) {
             this._disciplinas.splice(indxDisciplinaARemover, 1);
         }
@@ -31,7 +31,7 @@ class DisciplinaRepositorio {
         return this._alunos_matriculados;
     }
 
-    listarMatriculas() {
+    listarDisciplinas() {
         return this._disciplinas;
     }
 }

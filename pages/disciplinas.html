@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Disciplinas - IFPB</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <h1>Cadastro de disciplinas</h1>
+
+    <p>Código: <input id="codigo"><br></p>
+    <p>Nome: <input id="nomeDisc"><br></p>
+    <button onclick="controladorDisciplina.inserirDisciplina()">Cadastrar</button>
+
+    <ol id="lista_disciplinas"></ol>
+
+    <h1>Cadastrar os alunos na disciplina</h1>
+    <p>Matrícula: <input id="matricula"><br></p>
+    <p>Nome: <input id="nomeAlu"><br></p>
+    <p>Idade: <input id="idade"><br></p>
+    <button onclick="controladorDisciplina.inserirAluno()">Cadastrar</button>
+
+    <ol id="lista_alunos"></ol>
+
+    <button><a href="../index.html">Voltar</a></button>
+</body>
+    <script src="../modelo/aluno.js"></script>
+    <script src="../modelo/disciplina.js"></script>
+    <script src="../repositorio/disciplina_repositorio.js"></script>
+    <script src="../servico/disciplina_servico.js"></script>
+    <script src="../controlador/disciplina_controlador.js"></script>
+    <script src="./disciplinas-script.js"></script>
+</html>

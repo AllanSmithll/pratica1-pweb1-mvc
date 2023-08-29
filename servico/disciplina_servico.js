@@ -4,8 +4,8 @@ class DisciplinaService {
     }
 
     inserir(codigo, nome) {
-        const discPesquisada = this.pesquisarPorCodigo(codigo);
-        if (discPesquisada) {
+        const discPesquisada = this._repositorio.listar().filter(disc => disc.codigo === codigo)
+        if (discPesquisada.length > 0) {
             throw new Error('Disciplina já cadastrada!');
         }
         const discNova = new Disciplina(codigo, nome);
@@ -15,23 +15,23 @@ class DisciplinaService {
 
     inserirAlunoNaDisciplina(matricula, codigo) {
         const alunoPesquisado = controladorAluno.servico.pesquisarPorMatricula(matricula);
-        if (alunoPesquisado === undefined) {
+        if (alunoPesquisado.length === 0) {
             throw new Error("Aluno não foi cadastrado!");
         }
-        const discPesquisada = this.pesquisarPorCodigo(codigo);
-        if (discPesquisada === undefined) {
-            throw new Error('Disciplina não foi cadastrada!');
+        const discPesquisada = this._repositorio.listar().filter(disc => disc.codigo === codigo);
+        if (discPesquisada.length === 0) {
+            throw new Error("Disciplina não foi cadastrada!");
         }
-        if (discPesquisada.alunos.indexOf(alunoPesquisado) !== -1) {
+        if (discPesquisada[0].alunos.indexOf(alunoPesquisado[0]) !== -1) {
             throw new Error("Aluno já foi cadastrado nesta disciplina!");
         }
-        this._repositorio.inserirAlunoNaDisciplina(alunoPesquisado, discPesquisada);
-        return alunoPesquisado;
+       this._repositorio.inserirAlunoNaDisciplina(alunoPesquisado[0], discPesquisada[0]);
+        return alunoPesquisado[0];
     }
 
     atualizarNome(codigo, novoNome) {
         const idx = this._repositorio._disciplinas.indexOf(codigo);
-        if (idx === -1) {
+        if (idx == -1) {
             throw new Error("Disciplina não foi cadastrada!")
         }
         this._repositorio.atualizarNome(idx, novoNome);
@@ -42,7 +42,7 @@ class DisciplinaService {
         return resultado[0];
     }
 
-    removerAlunoDaDisciplina(matricula) {
+    remover(matricula) {
         this._repositorio.removerAluno(matricula);
     }
 
@@ -51,6 +51,6 @@ class DisciplinaService {
         if(idx === -1) {
             throw new Error("Disciplina não foi cadastrada!");
         }
-        this._repositorio.removerDisciplina(idx);
+        this._repositorio.remover(idx);
     }
 }

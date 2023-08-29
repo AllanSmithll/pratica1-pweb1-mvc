@@ -5,9 +5,9 @@ class AlunoControlador {
     }
 
     inserir() {
-        const nomeElemento = document.querySelector("#nome");
+        const nomeElemento = document.querySelector("#nomeAluno");
         const idadeElemento = document.querySelector("#idade");
-        const matriculoElemento = document.querySelector("#matriculaAluno");
+        const matriculoElemento = document.querySelector("#matricula");
         if (idadeElemento === null || idadeElemento.value === ""
             || nomeElemento === null || nomeElemento.value === ""
             || matriculoElemento === null || matriculoElemento.value === "") {
@@ -23,11 +23,7 @@ class AlunoControlador {
 
     inserirAlunoNoHtml(aluno, elementoDestino) {
         const alunoElemento = document.createElement("li");
-        alunoElemento.textContent = `Nome: ${aluno._nome} - Idade: ${aluno._idade}`;
+        alunoElemento.textContent = `Nome: ${aluno.nome} - Idade: ${aluno.idade}`;
         elementoDestino.appendChild(alunoElemento);
-    }
-
-    pesquisarPorMatricula(matricula) {
-        return this.servico.pesquisarPorMatricula(matricula);
     }
 }

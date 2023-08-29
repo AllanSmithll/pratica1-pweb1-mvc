@@ -7,9 +7,8 @@ class AlunoRepositorio {
     inserir(aluno) {
         this._alunos.push(aluno);
     }
-
     remover(matricula) {
-        const indxAlunoARemover = this.alunos.findIndex(aluno => aluno._matricula === matricula);
+        const indxAlunoARemover = this.alunos.findIndex(aluno => aluno.matricula === matricula);
         if (indxAlunoARemover > -1) {
             this._alunos.splice(indxAlunoARemover, 1);
         }

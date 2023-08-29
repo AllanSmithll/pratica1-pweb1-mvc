@@ -9,7 +9,7 @@ class DisciplinaRepositorio {
     }
 
     inserirAlunoNaDisciplina(aluno, disciplina) {
-        const idx = this_disciplinas.indexOf(disciplina);
+        const idx = this._disciplinas.indexOf(disciplina);
         this._disciplinas[idx].alunos.push(aluno);
     }
 
@@ -21,17 +21,7 @@ class DisciplinaRepositorio {
         return this._disciplinas;
     }
 
-    removerAluno(matricula) {
-        const indxAlunoARemover = this._disciplinas.findIndex(aluno => aluno._matricula === matricula);
-        if (indxAlunoARemover > -1) {
-            this._disciplinas.splice(indxAlunoARemover, 1);
-        }
-    }
-
-    removerDisciplina(codigo) {
-        const indxDisciplinaARemover = this._disciplinas.findIndex(disc => disc._codigo === codigo);
-        if (indxDisciplinaARemover > -1) {
-            this._disciplinas.splice(indxDisciplinaARemover, 1);
-        }
+    remover(indice) {
+        this._disciplinas.splice(indice, 1);
     }
 }

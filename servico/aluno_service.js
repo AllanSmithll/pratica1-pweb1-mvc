@@ -5,7 +5,7 @@ class AlunoService {
 
     inserir(nome, idade, matricula) {
         const alunoPesquisado = this.pesquisarPorMatricula(matricula);
-        if (alunoPesquisado !== undefined) {
+        if (alunoPesquisado.length > 0) {
             throw new Error('Aluno já cadastrado!');
         }
         if (idade < 18) {
@@ -17,8 +17,7 @@ class AlunoService {
     }
 
     pesquisarPorMatricula(matricula) {
-        const resultado = this.repositorio.listar().filter(alu => alu.matricula === matricula);
-        return resultado[0];
+        return this.repositorio.listar().filter(alu => alu.matricula === matricula);
     }
 
     remover(matricula) {

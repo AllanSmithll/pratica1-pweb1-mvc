@@ -7,6 +7,78 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <h1>Disciplinas - IFPB</h1>
+
+    <div class="container">
+        <h2>Cadastro de Alunos</h2>
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nomeAluno">
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade">
+        </div>
+        <div class="form-group">
+            <label 
+for="matriculaAluno">Matrícula:</
+label>
+            <input type="text" id="matricula">
+        </div>
+        <button onclick="controladorAluno.inserir
+()">Cadastrar Aluno</button>
+
+        <h2>Cadastro de Disciplinas</h2>
+        <div class="form-group">
+            <label for="codigo">Código:</label>
+            <input type="text" id="codigo">
+        </div>
+        <div class="form-group">
+            <label for="nomeDisc">Nome:</label>
+            <input type="text" id="nome">
+        </div>
+        <button onclick="controladorDisciplina.
+inserir()">Cadastrar Disciplina</button>
+
+        <h2>Cadastrar Alunos em Disciplina</h2>
+        <div class="form-group">
+            <label 
+for="matriculaEmDisc">Matrícula:</
+label>
+            <input type="text" 
+id="matriculaEmDisc">
+            <label for="codigoEmDisc">Código:</
+label>
+            <input type="text" id="codigoEmDisc">
+        </div>
+        <button onclick="controladorDisciplina.
+inserirAlunoNaDisciplina()">Cadastrar 
+Aluno na Disciplina</button>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Alunos</h2>
+        <ol id="listaAlunos"></ol>
+    </div>
+
+    <div class="container">
+        <h2>Lista de Disciplinas</h2>
+        <ol id="lista_disciplinas"></ol>
+    </div>
+
+    <div class="container">
+        <h2>Alunos nas Disciplinas</h2>
+        <ol id="lista_alunos"></ol>
+    </div>
+
 </body>
+<script src="modelo/aluno.js"></script>
+<script src="modelo/disciplina.js"></script>
+<script src="repositorio/aluno_repositorio.js"></script>
+<script src="repositorio/disciplina_repositorio.js"></script>
+<script src="servico/aluno_service.js"></script>
+<script src="servico/disciplina_servico.js"></script>
+<script src="controlador/aluno_controlador.js"></script>
+<script src="controlador/disciplina_controlador.js"></script>
+<script src="scripts.js"></script>
 </html>

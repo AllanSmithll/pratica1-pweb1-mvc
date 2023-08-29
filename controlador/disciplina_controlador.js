@@ -11,7 +11,11 @@ class DisciplinaControlador {
             || nomeElemento === null || nomeElemento.value === "") {
             throw new Error("Algum campo está vazio! Escreva algo.");
         }
-        const disciplinaInserida = this.servico.inserir(Number(codigoElemento.value), nomeElemento.value);
+        const disciplinaInserida = this.servico.inserir(
+            Number(codigoElemento.value),
+            nomeElemento.value
+        );
+        
         const listaDisciplinasElemento = document.querySelector("#lista_disciplinas");
         if (disciplinaInserida) {
             this.inserirDisciplinaNoHtml(disciplinaInserida, listaDisciplinasElemento);
@@ -29,9 +33,10 @@ class DisciplinaControlador {
             matriculaElemento.value,
             Number(codigoElemento.value)
         );
-        const listaAlunosElemento = document.querySelector("#lista_alunos");
+
+        const listaDisciplinasElemento = document.querySelector("#lista_alunos");
         if (alunoInserido) {
-            this.inserirAlunoNoHtml(alunoInserido, listaAlunosElemento);
+            this.inserirAlunosNoHtml(codigoElemento.value, alunoInserido.nome, listaDisciplinasElemento);
         }
     }
 
@@ -41,9 +46,9 @@ class DisciplinaControlador {
         elementoDestino.appendChild(disciplinaElemento );
     }
 
-    inserirAlunoNoHtml(aluno, elementoDestino) {
-        const alunoElemento = document.createElement("li");
-        alunoElemento.textContent = `Matrícula: ${aluno._matricula} - Nome: ${aluno._nome}`;
-        elementoDestino.appendChild(alunoElemento);
+    inserirAlunosNoHtml(codigo, aluno, elementoDestino) {
+        const disciplinaElemento = document.createElement("li");
+        disciplinaElemento.textContent = `Código da disciplina: ${codigo} - Aluno: ${aluno}`;
+        elementoDestino.appendChild(disciplinaElemento);
     }
 }

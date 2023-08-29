@@ -1,11 +1,10 @@
 class DisciplinaService {
     constructor() {
         this._repositorio = new DisciplinaRepositorio();
-        this._alunoService = new AlunoService();
     }
 
     inserirDisciplina(codigo, nome) {
-        const discPesquisada = this.pesquisarDisciplinaPorCodigo(codigo);
+        const discPesquisada = this.pesquisarPorCodigo(codigo);
         if (discPesquisada.length > 0) {
             throw new Error('Disciplina já cadastrada!');
         }
@@ -14,16 +13,12 @@ class DisciplinaService {
         return discNova;
     }
 
-    inserirAlunoNaDisciplina(matricula) {
-        const alunoPesquisado = this._alunoService.pesquisarPorMatricula(matricula);
-        if (!alunoPesquisado) {
-            throw new Error('Aluno não existe!');
-        }
-        this._repositorio.inserirAlunoNaDisciplina(alunoPesquisado);
-        return alunoPesquisado;
+    inserirAlunoNaDisciplina(matricula, codigo) {
+        this._repositorio.inserirAlunoNaDisciplina(matricula, codigo);
+        return matricula;
     }
 
-    pesquisarDisciplinaPorCodigo(codigo) {
+    pesquisarPorCodigo(codigo) {
         return this._repositorio.listarDisciplinas().filter(
             disc => disc._codigo === codigo);
     }

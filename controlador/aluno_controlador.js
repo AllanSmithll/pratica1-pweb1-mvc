@@ -26,4 +26,8 @@ class AlunoControlador {
         alunoElemento.textContent = `Nome: ${aluno._nome} - Idade: ${aluno._idade}`;
         elementoDestino.appendChild(alunoElemento);
     }
+
+    pesquisarPorMatricula(matricula) {
+        return this.servico.pesquisarPorMatricula(matricula);
+    }
 }

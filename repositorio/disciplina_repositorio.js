@@ -5,8 +5,8 @@ class DisciplinaRepositorio {
         this._disciplinas = [];
     }
 
-    inserirAlunoNaDisciplina(aluno) {
-        this._alunos_matriculados.push(aluno);
+    inserirAlunoNaDisciplina(aluno, codigo) {
+        this._alunos_matriculados.push(aluno, codigo);
     }
 
     inserirDisciplina(disciplina) {

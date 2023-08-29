@@ -2,17 +2,16 @@ class DisciplinaControlador {
 
     constructor() {
         this._servico = new DisciplinaService();
-        this._controllerAluno = new AlunoControlador();
     }
 
-    inserirDisciplina() {
+    inserir() {
         const codigoElemento = document.querySelector("#codigo");
         const nomeElemento = document.querySelector("#nomeDisc");
         if (codigoElemento === null || codigoElemento.value === ""
             || nomeElemento === null || nomeElemento.value === "") {
             throw new Error("Algum campo está vazio! Escreva algo.");
         }
-        const disciplinaInserida = this._servico.inserirDisciplina(Number(codigoElemento.value), nomeElemento.value);
+        const disciplinaInserida = this._servico.inserir(Number(codigoElemento.value), nomeElemento.value);
         const listaDisciplinasElemento = document.querySelector("#lista_disciplinas");
         if (disciplinaInserida) {
             this.inserirDisciplinaNoHtml(disciplinaInserida, listaDisciplinasElemento);
@@ -26,15 +25,10 @@ class DisciplinaControlador {
         || codigoElemento === null || codigoElemento.value === "") {
             throw new Error("Algum campo está vazio! Escreva algo.");
         }
-        const alunoExiste = this._controllerAluno.pesquisarPorMatricula(matriculaElemento.value);
-        if (alunoExiste.length === 0) {
-            throw new Error("Aluno não existe!");
-        }
-        const disciplinaExiste = this._servico.pesquisarPorCodigo(codigoElemento.value);
-        if (disciplinaExiste.length ===  0) {
-            throw new Error("Disciplina não existe!");
-        }
-        const alunoInserido = this._servico.inserirAlunoNaDisciplina(Number(matriculaElemento.value), Number(codigoElemento.value));
+        const alunoInserido = this._servico.inserirAlunoNaDisciplina(
+            Number(matriculaElemento.value),
+            Number(codigoElemento.value)
+        );
         const listaAlunosElemento = document.querySelector("#lista_alunos");
         if (alunoInserido) {
             this.inserirAlunoNoHtml(alunoInserido, listaAlunosElemento);
@@ -43,7 +37,7 @@ class DisciplinaControlador {
 
     inserirDisciplinaNoHtml(disciplina, elementoDestino) {
         const disciplinaElemento = document.createElement("li");
-        disciplinaElemento.textContent = `Código: ${disciplina._codigo} - Nome: ${disciplina._nome}`;
+        disciplinaElemento.textContent = `Código: ${disciplina.codigo} - Nome: ${disciplina.nome}`;
         elementoDestino.appendChild(disciplinaElemento );
     }
 
